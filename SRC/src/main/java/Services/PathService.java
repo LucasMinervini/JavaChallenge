@@ -1,11 +1,9 @@
 package Services;
 
 import model.Path;
+import model.ShortestPathResponse;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PathService {
     private Map<Long, Path> paths;
@@ -42,5 +40,16 @@ public class PathService {
     // Método para eliminar todos los caminos
     public void removeAllPaths() {
         paths.clear();
+    }
+
+    public ShortestPathResponse getShortestPath(Long sourceId, Long destinationId) {
+        // Aquí implementa la lógica para calcular el camino más corto
+        // Puedes usar algoritmos como Dijkstra o Floyd-Warshall
+
+        // Ejemplo de implementación simple
+        List<Long> shortestPath = Arrays.asList(sourceId, 123L, destinationId); // Dummy data
+        double cost = 100.0; // Dummy cost
+
+        return new ShortestPathResponse(shortestPath, cost);
     }
 }

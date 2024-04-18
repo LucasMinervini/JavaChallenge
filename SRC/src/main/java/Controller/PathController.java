@@ -2,6 +2,7 @@ package Controller;
 
 import Services.PathService;
 import model.Path;
+import model.ShortestPathResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +14,10 @@ import java.util.Map;
 @RequestMapping("/api")
 public class PathController {
 
-    private final PathService service;
+    private final PathService pathService;
 
     public PathController(PathService service) {
-        this.service = service;
+        this.pathService = service;
     }
 
     private final Map<String, Double> pathCosts = new HashMap<>();
@@ -39,5 +40,9 @@ public class PathController {
             return ResponseEntity.notFound().build();
         }
     }
-
+    @GetMapping("/paths/{sourceId}/{destinationId}")
+    public ResponseEntity<ShortestPathResponse> getShortestPath(@PathVariable Long sourceId, @PathVariable Long destinationId) {
+        ShortestPathResponse response = pathService.getShortestPath(sourceId, destinationId);
+        return ResponseEntity.ok(response);
+    }
 }
