@@ -11,6 +11,10 @@ public class ShortestPathResponse {
         this.cost = cost;
     }
 
+    public ShortestPathResponse() {
+
+    }
+
     public List<Long> getPath() {
         return path;
     }
