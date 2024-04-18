@@ -40,6 +40,7 @@ public class ShortestPathService {
     }
     public ShortestPathResponse getShortestPath(Long sourceId, Long destinationId) {
         // Aquí implementa la lógica para calcular el camino más corto
+        // Se aplica el algoritmo de Dijkstra
         Map<Long, Double> distances = new HashMap<>();
         Map<Long, Long> previous = new HashMap<>();
         PriorityQueue<Long> priorityQueue = new PriorityQueue<>(Comparator.comparingDouble(distances::get));
@@ -80,7 +81,7 @@ public class ShortestPathService {
         //double cost = distances.get(destinationId);
         double cost = 100.0; // Dummy cost
         return new ShortestPathResponse(path, cost);
-        // Puedes usar algoritmos como Dijkstra o Floyd-Warshall
+
 
     }
 }
